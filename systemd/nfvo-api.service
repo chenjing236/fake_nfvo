@@ -1,0 +1,13 @@
+[Unit]
+Description=NFVO WSGI Service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/nfvo-api
+Restart=on-abort
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

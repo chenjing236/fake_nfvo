@@ -1,0 +1,75 @@
+CHANGES
+=======
+
+* Add switch in config file for wsgi app url scheme
+* [faked\_nfvo] Fixed bugs in vimops\_fm\_test
+* [faked\_nfvo] Improved vimops\_fm\_test and schema for vim\_cm
+* [faked\_nfvo] Add test case for subscription
+* [faked\_nfvo] Add some vim scenario cases
+* [faked\_nfvo] Improved test utils and request methods
+* [faked\_nfvo] Merge push\_res\_change and push\_cm\_heart\_beat, because the two interface using one url
+* [faked\_nfvo] Modify token expiry threshold, update some request and response
+* [faked\_nfvo] Read params from config file and some improvements for vim tests
+* Add some parameters for server config
+* [faked\_nfvo] Some updates for utils files
+* [faked\_nfvo] Add case push\_res\_changes (pim)
+* Fix typo in generate\_pem\_cert.py
+* [faked\_nfvo] Add authentication module
+* Add example input for generating pem cert file
+* Add https support and manual for generating the pem cert
+* [faked\_nfvo]Some updates && Add scenarios case:PIMops subscription and authentication
+* Rename file VIMops\_fault\_management.py to vimops\_fm\_test.py
+* Delete a useless file
+* [faked\_nfvo] Add scenarios case:VIMops subscription and authentication
+* [faked\_nfvo] Modify vim/pim config file
+* [faked\_nfvo] Add scenario test about fault management
+* Revert "[faked\_nfvo] Modify vim/pim input config file"
+* [faked\_nfvo] Add PIM PushCmHeartbeat and PIM CM scenario case
+* [faked\_nfvo] Add scenario test about fault management
+* [faked\_nfvo] Modify vim/pim input config file
+* [faked\_nfvo] Add scenario test about performance management
+* [faked\_nfvo] Some updates for files in directory:request
+* [faked\_nfvo] Add VIMops config management scenario case
+* Add requirements file for pip install
+* Change logging and fix request\_log middleware for logging request
+* [faked\_nfvo] Add validate for method: request\_utils.get\_token
+* [faked\_nfvo] Add case list\_history\_metrics(vim),list\_active\_alarms(pim),list\_history\_alarms(pim)
+* [faked\_nfvo] Change get\_token method:use request to get token from vim/pim server
+* [faked\_nfvo] Add validation for response from vim/pim server
+* [faked\_nfvo] move files to faked\_nfvo module
+* Add apache license
+* [faked\_nfvo] Add list\_res\_details request
+* Change some file's permission and location
+* Delete api dir since it'd been move to package dir
+* Delete request dir since it had been moved to faked\_nfvo module
+* Add packaging support for faked\_nfvo
+* Use systemd to manage nfvo wsgi service
+* Delete a file and rename run.py to nfvo\_app.py
+* [faked\_nfvo] Add VIM&PIM 'CreateSubscription', 'DeleteSubscription' and 'ListSubscriptions'
+* [faked\_nfvo] Add some cases:requests from nfvo to vim/pim server
+* [faked\_nfvo]Update fm schema for the latest doc
+* Use middleware to log request
+* [faked\_nfvo] Modify the get\_token schema in order to consistent with doc
+* Change urlmap to add v1app for wsgi app
+* Move curl\_command out of api module
+* [faked\_nfvo] Add vim\_pm and pim\_pm
+* [faked\_nfvo] Add vim PushAlarms, PushFmHeartbeat and pim PushAlarms and PushFmHeartbeat
+* [faked\_nfvo] Add response for vim\_cm and add curl comand for ListResDetails
+* [faked\_nfvo] Add VIM AuthForPushData and PIM AuthForPushData
+* [faked\_nfvo] Add 'PushResPoolInfo', 'PushVmChanges' and 'PushCmHeartbeat' interfaces
+* Add curl command for NFVO->VIM/PIM
+* Some cleanup and improvements
+* Refactor code and involve json schema check
+* Change API request validating mechanism
+* Add API route support
+* Add log file support
+* Automatically get external IP of local machine
+* Commented out lines about https certificate
+* Init project for faked\_nfvo
+* init project
+* add exception method in PimLogger module
+* finish log and config class
+* add config read class
+* restruct folders
+* database script for PIM plugin
+* Initial commit

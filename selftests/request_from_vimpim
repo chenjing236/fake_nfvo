@@ -1,0 +1,65 @@
+#!/bin/bash
+NFVO_API_URL="10.100.4.161:9131"
+FILEURL="192.168.112.80:9131"
+curl -X PUT http://${NFVO_API_URL}/v1/pimPm  -H "Content-Type:application/json" -d '{"Version": "1.0", "VimId": "123456", "SrcType": "pim", "MsgType": "vimPmMetrics", "FileUri": "https://${FILEURL}/v1/vimPm/files/20160601-141500.gz"}'
+
+curl -X PUT http://${NFVO_API_URL}/v1/vimPm  -H "Content-Type:application/json" -d '{"Version": "1.0", "VimId": "123456", "SrcType": "vim", "MsgType": "vimPmMetrics", "FileUri": "https://${FILEURL}/v1/vimPm/files/20160601-141500.gz"}'
+
+curl -X POST http://${NFVO_API_URL}/v1/vimTokens -d '{"vimId": "123456789012345678901234567890123456"}'
+
+curl -X POST http://${NFVO_API_URL}/v1/pimTokens -d '{"vimId": "123456789012345678901234567890123456"}'
+
+
+curl -X PUT http://${NFVO_API_URL}/v1/vimFm -d '{"Version": "1.0", "VimId": "123", "SrcType": "vim", "MsgType": "vimFmHeartbeat" }'
+
+curl -X PUT http://${NFVO_API_URL}/v1/pimFm -d '{"Version": "1.0", "VimId": "123", "SrcType": "pim", "MsgType": "pimFmHeartbeat" }'
+
+curl -X PUT http://${NFVO_API_URL}/v1/vimFm -d '{
+"Version": "1.0", 
+"VimId": "123", 
+"SrcType": "vim", 
+"MsgType": "vimFmAlarm", 
+"AlarmList": [ 
+    {
+      "alarmTitle": "Server1 Down!",
+        "alarmStatus": 1,
+        "alarmType": "vm",
+        "origSeverity": 1,
+        "eventTime": "2016-06-16T21:12:54Z",
+        "alarmId": "200",
+        "msgSeq": 230,
+        "specificProblemID": "0126.37",
+        "specificProblem": "Kernel Panic",
+        "neUID": "ed8qe",
+        "neName": "Server1",
+        "neType":  "vm",
+        "objectUID": "ed8",
+        "objectName": "Server1",
+        "objectType": "vm",
+        "locationInfo": "Compute-1",
+        "addInfo": "",
+        "PVFlag": "pim"
+    }
+],
+"CurrentBatch": 1,
+"TotalBatches": 1
+}'
+
+curl -X PUT http://${NFVO_API_URL}/v1/pimFm -d '{
+"Version": "1.0", 
+"VimId": "123", 
+"SrcType": "pim", 
+"MsgType": "pimFmAlarm", 
+"CurrentBatch": 1,
+"TotalBatches": 1
+}'
+
+#PushResPoolInfo: 
+curl -X PUT http://${NFVO_API_URL}/v1/vimCm -d '{"Version": "1.0", "VimId": "81f1d9d0-ca13-4eea-a4ce-9bd89a50c9d1", "SrcType": "vpim", "MsgType": "vimCmRespool", "ResPool": {"Regions": ["RegionOne"], "AZs": [{"Name": "internal", "cRegion": "RegionOne"}, {"Name": "nova", "cRegion": "RegionOne"}], "HAs": [{"Name": "nova", "cAZ": "nova"}], "Hosts": [{"SerialNumber": "026XZY78", "Hostname": "Controller-1", "MgmtV4IP": "172.16.10.11/24", "cHAs": ["nova"], "HostType": "Controller", "OpsStatus": "UP"}], "Storages": [{"Backend": "controller@ceph1#ceph", "TotalCapacity": 1000}]}}'
+
+#PushVmChanges: 
+curl -X PUT http://${NFVO_API_URL}/v1/vimCm -d '{"Version": "1.0", "VimId": "81f1d9d0-ca13-4eea-a4ce-9bd89a50c9d1", "SrcType": "vim", "MsgType": "vimCmVmChanges", "AddVMs": [{"VmId": "ed8c343c-0666-40b0-a831-1575a0089bbf", "Name": "Server1", "cHost": "Compute-1", "vCpus": 4, "vRams": 16384, "vNics": [ {"vNicMac": "fa:16:3f:23:13:f2", "vNicId": "fcecef26-60cc-4db7-92c6-e60f62abe1ba", "vNicIPs": ["172.16.100.10/24"]} ], "vDisks": [{"Name": "/dev/vda", "Size": 10}] } ], "DelVMs": ["048d398c-1f34-42f9-8bfe-5f845aae23f3", "81917ba0-671e-40a7-ad0e-1626b51b42b5"] }'
+
+#PushCMHeatbeat: 
+curl -X PUT http://${NFVO_API_URL}/v1/vimCm -d '{"Version": "1.0", "VimId": "81f1d9d0-ca13-4eea-a4ce-9bd89a50c9d1", "SrcType": "vpim", "MsgType": "vimCmHeartbeat"}'
+

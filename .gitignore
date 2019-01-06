@@ -1,0 +1,7 @@
+*.pyc
+*.swp
+*.ropeproject
+*.log
+.idea/
+build/
+faked_nfvo.egg-info

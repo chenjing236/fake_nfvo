@@ -1,0 +1,10 @@
+WebOb>=1.7.4
+six>=1.10.0
+jsonschema>=2.6.0
+netaddr>=0.7.19
+setuptools>=20.7.0
+eventlet>=0.19.0
+Routes>=2.3.1
+oslo_log>=3.36.0
+oslo.utils>=3.35.0
+PasteScript>=2.0.2
